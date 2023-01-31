@@ -1,0 +1,70 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'styles/mystyle.css' %}">
+</head>
+{% block content %}
+
+{% endblock %}
+
+<body>
+  <div class="container">
+    <div class="row mt-3 ml-2">
+      <div class="col-md-3 left">
+
+        <div class="p-4 pt-5">
+
+          <a href="{% url 'administration:quotespage' %}">
+            <h2>HOME</h2>
+          </a>
+          <a href="{% url 'administration:logout' %}">
+            <h2>LOG-OUT</h2>
+          </a>
+
+        </div>
+
+      </div>
+      <div class="col-md-9 right">
+        <form action="" method="POST" enctype="multipart/form-data">
+
+          {% for quote in quotesList %}
+          {% if quote.status == 'pending' %}
+          <div class="p-4 pt-5">
+            <div class="row g-3">
+              <div class="col-sm-7">
+                <textarea class="form-control" disabled id="exampleFormControlTextarea1" rows="6">
+                  {{quote.user.name}}
+                  {{quote.quote}}
+                  {{quote.status}}
+                </textarea>
+              </div>
+                
+              <div class="col-sm pt-3">
+                
+                <a href="{% url 'administration:approve' quote.id %}"><button type="button" class="btn btn-success w-100">APPROVE</button></a>
+                
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+        </form>
+      
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

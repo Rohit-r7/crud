@@ -1,0 +1,28 @@
+{% extends 'user/extension.html' %}
+
+{% load static %}
+
+{% block right_content %}
+<style>
+.text{
+  background-color: white;
+  height: 100%;
+  width: 80%;
+  margin: 2%;
+  padding: 5%;
+}
+</style>
+<div class="p-4 pt-5">
+      <div class="mb-3">
+      {% for quote in quotesList %}
+      {% if quote.status == 'approve' %}
+      <div class="text">
+        <h4>{{quote.user.name}}</h4>
+        <p>{{quote.quote}}</p>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+      </div>
+</div>
+{% endblock %}

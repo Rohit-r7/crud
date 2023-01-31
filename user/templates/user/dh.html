@@ -1,0 +1,38 @@
+<script>
+    $(document).ready(function(){
+      $('#signup_form').validate({
+        rules : {
+            yourname : {
+              required : true,
+              minlength : 4
+            },
+            username : {
+              required : true,
+              minlength : 5
+            },
+            password : {
+              required : true,
+              minlength : 5
+            },
+            confirm_password : {
+              required : true,
+              equalto : 'password'
+            }
+        },
+        messages : {
+            yourname : {
+              required : 'Please Enter your Name ',
+              minlength : 'Required Minimum four letters'
+            },
+            username : {
+              required : 'Please Enter a username',
+              minlength : 'Required Minimum five letters'
+            },
+            confirm_password : {
+              required : 'Please confirm the password',
+              equalto : 'Password not matching'
+            }
+        }
+      })
+    })
+  </script>

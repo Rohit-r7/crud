@@ -1,0 +1,19 @@
+{% extends 'user/extension.html' %}
+
+{% load static %}
+
+
+{% block right_content %}
+<form action="" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="p-4 pt-5">
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label"></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" placeholder="Enter your post here..." name="creating_quote"></textarea>
+      </div>
+      <div class="text-center">
+      <button class="btn btn-primary w-50" type="submit">CREATE POST</button>
+    </div>
+</div>
+</form>
+{% endblock %}
